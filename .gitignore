@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+ 
+int  main(){
+ 
+  // declaramos variables necesarios y entre ellos el un Vectornota de tipo estring 
+  //para almacenar las cadenas de texto
+ 
+  int nota_numerico;  // numero que nos pedira en consola
+  int i;              // para el bucle for
+ 
+  // guardamos en un vector los respectivos numeros en letras tal como pide el problema
+ 
+  string Vectornota[20]={"uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez","once","doce","trece","catorce","quince","dieciseis","diecisiete","dieciocho","diecinueve","veinte"};
+ 
+  cout<<"INGRESE TU NOTA EN NUMEROS "<<endl;
+ 
+  cin>>nota_numerico;
+  if(nota_numerico>=0 && nota_numerico<=20){
+ 
+  if(nota_numerico==0){
+    cout<<"TU NOTA ES  :--->  cero "<<endl;
+  }
+  else{
+ 
+  for(i=0;i<nota_numerico;i++){
+    i=i;
+  }
+ 
+    cout<<"TU NOTA ES  : ---> "<< Vectornota[i-1] <<endl;
+  }
+}
+   else{
+     cout<<"el numero ingresado es invalido"<<endl;
+ 
+   }
+ 
+return 0;
+}
