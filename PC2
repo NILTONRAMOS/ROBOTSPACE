@@ -1,0 +1,94 @@
+#include<iostream>
+using namespace std;
+ int main(int argc, char const *argv[]) {
+    int d1,d2,d3,menor,mayor,entrada,D2;
+    double m;
+    bool ingresado;
+    ingresado=(entrada>99 || entrada<1000);
+     while(ingresado==true){
+       cout<<"ingrese la jugada del jugador"<<endl;
+       cin>>entrada;
+       d3=entrada%10;
+       d2=(entrada%100)/10;
+       d1=entrada/100;
+       ingresado=(entrada>99 || entrada<1000);
+       cout<<"la jugada debe ser de 3 datos"<<endl;
+     }
+
+     if((d1=0||d1>6)||(d2=0||d2>6)||(d3=0||d3>6))
+     cout<<"el valor de cada dado debe ser solo de 1 a 6"<<endl;
+
+//--------------------------------------------------
+    if(d1==d2==d3==6)
+    m=4;
+//--------------------------------------------------
+    if(d1%2!=0 && d2%2==0 && d3%2==0)
+    m=5;
+    if(d2%2!=0 && d1%2==0 && d3%2==0)
+    m=5;
+    if(d3%2!=0 && d2%2==0 && d1%2==0)
+    m=5;
+//-------------------------------------------------
+    if((d1==d2-1)&&(d3==d2+1))
+    m=d1+d2;
+
+    if((d3==d1-1)&&(d2==d1+1))
+    m=d1+d3;
+
+    if((d2==d3-1)&&(d1==d3+1))
+    m=d2+d3;
+//--------------------------------------------------
+    if ((d1+d2+d3==13)&&((d1==5)||(d2==5)||(d3=5)))
+    m=1;
+//---------------------------------------------------
+      if((d1=2*d2)||(d1=2*d2)||(d1=2*d2)){
+        cout<<"lanse nuevamente un dado"<<endl;
+        cin>>D2;
+        while(D2=0&&D2>6){
+          cout<<"el segundo lanzamiento debe estar en el rango de 1 a 6"<<endl;
+        }
+        m=2*D2;
+      }
+
+//--------------------------------------------------------
+    if(((d1+d2)%d3==0)||((d1+d3)%d2==0)||((d3+d2)%d1==0)){
+
+      if(d1<d2){
+            if(d3<d2){
+              if(d3<d1)
+              menor=d3;
+            else
+              menor=d1;
+              mayor=d2;
+       }
+         else{
+           if(d2<d2)
+              menor=d1;
+           else
+              menor=d2;
+              mayor=d3;}
+      }
+
+      else{
+
+        if(d1<d3){
+          if(d1<d2)
+            menor=d1;
+          else
+            menor=d2;
+            mayor=d3;}
+        else{
+          if(d2<d3)
+            menor=d2;
+          else
+            menor=d3;
+            mayor=d1;}
+
+      }
+
+      m=mayor/(3*menor+2*mayor);}
+    cout<<"el puntaje es :------>"<<m<<endl;
+
+
+  return 0;
+}
