@@ -1,0 +1,76 @@
+   //PROGRAMA PARA RECEPTOR INFRARROJO y bluetooh
+    //             en modo maestro
+    
+    #include<SoftwareSerial.h>    //libreria de comunicacion serial
+    SoftwareSerial mySerial(1,0);
+    
+    int led=13;  // led para conocer activacion
+    
+    void setup(){
+      
+    Serial.begin(9600);  //velocidad de comunicacion a pc
+    mySerial.begin(9600);  //velocidad de configuracion MAESTRO-ESCLAVO
+    pinMode(12,INPUT);   //pin 12 como entrada del sensor
+   
+    }
+    
+    void loop(){
+     //------------------------------------------- 
+     //conjunto de codigos a verificar para hacer giro 45° NO
+     
+     
+    if(digitalRead(12)==LOW)
+    delay(20);
+        {
+             if(digitalRead(12)==HIGH)
+             delay(20);
+             {
+                   if(digitalRead(12)==LOW)
+                      delay(20);
+                      {
+                   
+                   mySerial.write('200'); //envia el valor entero 200 a traves del modulo
+                                          //para que el esclavo lo pueda interpretar
+                   }  
+             }
+        }
+    
+    //-------------------------------------------
+    //conjunto de codigos a verificar para marcha directa 
+    
+    if(digitalRead(12)==LOW)
+    delay(30);
+        {
+             if(digitalRead(12)==HIGH)
+             delay(30);
+             {
+                   if(digitalRead(12)==LOW)
+                      delay(30);
+                      {
+                   
+                    mySerial.write('255');//envia el valor entero 200 a traves del modulo
+                                          //para que el esclavo lo pueda interpretar
+                   }  
+             }
+        }
+        
+    //-------------------------------------------
+    //conjunto de codigos a verificar para hacer giro 45° NE
+    
+    if(digitalRead(12)==HIGH)
+    delay(40);
+        {
+             if(digitalRead(12)==LOW )
+             delay(40);
+             {
+                   if(digitalRead(12)==LOW)
+                      delay(40);
+                      {
+                   
+                   mySerial.write('155');//envia el valor entero 200 a traves del modulo
+                                          //para que el esclavo lo pueda interpretar
+                   }  
+             }
+        }
+                      
+    }
